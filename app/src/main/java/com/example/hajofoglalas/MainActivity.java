@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent1 = new Intent(this, MainActivity.class);
             startActivity(intent1);
             return true;
+            //asdasd
         } else if (id == R.id.menu_item2)
         {
             Intent intent2 = new Intent(this, HajoFoglalasActivity.class);
