@@ -46,7 +46,13 @@ public class HajoFoglalasActivity extends AppCompatActivity {
             Intent intent2 = new Intent(this, HajoFoglalasActivity.class);
             startActivity(intent2);
             return true;
-        } else {
+        }
+        else if(id == R.id.menu_item3)
+        {
+            Intent intent2 = new Intent(this, LoginActivity.class);
+            startActivity(intent2);
+            return true;
+        }else {
             return super.onOptionsItemSelected(item);
         }
     }

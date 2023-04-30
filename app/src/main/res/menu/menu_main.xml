@@ -8,5 +8,5 @@
         android:title="@string/item_2"/>
     <item
         android:id="@+id/menu_item3"
-        android:title="WIP"/>
+        android:title="Bejelentkezés"/>
 </menu>

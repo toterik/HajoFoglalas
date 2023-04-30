@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import androidx.appcompat.widget.Toolbar;
 public class MainActivity extends AppCompatActivity {
+    public static boolean isLoggedin = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(false);
             actionBar.setTitle("");
         }
+
     }
 
     @Override
@@ -44,13 +46,20 @@ public class MainActivity extends AppCompatActivity {
             Intent intent1 = new Intent(this, MainActivity.class);
             startActivity(intent1);
             return true;
-            //asdasd
         } else if (id == R.id.menu_item2)
         {
             Intent intent2 = new Intent(this, HajoFoglalasActivity.class);
             startActivity(intent2);
             return true;
-        } else {
+        }
+        else if(id == R.id.menu_item3)
+        {
+            Intent intent2 = new Intent(this, LoginActivity.class);
+            startActivity(intent2);
+            return true;
+        }
+
+        else {
             return super.onOptionsItemSelected(item);
         }
     }

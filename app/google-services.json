@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "993334168060",
+    "project_id": "hajofoglalas-5bcfb",
+    "storage_bucket": "hajofoglalas-5bcfb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993334168060:android:075fb7ad99d86c93214a79",
+        "android_client_info": {
+          "package_name": "com.example.hajofoglalas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993334168060-gbf0eo2qirfijit4ui484h1jj6dieci7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hajofoglalas",
+            "certificate_hash": "4bf125023f74570823db5b196b2856df34e8df1d"
+          }
+        },
+        {
+          "client_id": "993334168060-s25nsqae66mj2rd7pbfuhqcm9unao6sj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWPHvaxEfg-lhvl0TMHd3CX7D0F4EjH5U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993334168060-s25nsqae66mj2rd7pbfuhqcm9unao6sj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
