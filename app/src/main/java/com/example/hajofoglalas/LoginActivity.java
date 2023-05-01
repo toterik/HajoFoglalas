@@ -34,20 +34,39 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        if(MainActivity.isLoggedin){
+            MenuItem item = menu.findItem(R.id.menu_item4);
+            item.setVisible(true);
+            MenuItem items = menu.findItem(R.id.menu_item3);
+            items.setVisible(false);
+
+        }
+        else {
+            MenuItem item = menu.findItem(R.id.menu_item3);
+            item.setVisible(true);
+            MenuItem items = menu.findItem(R.id.menu_item4);
+            items.setVisible(false);
+
+        }
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         int id = item.getItemId();
 
-        if (id == R.id.menu_item1) {
+        if (id == R.id.menu_item1)
+        {
             Intent intent1 = new Intent(this, MainActivity.class);
             startActivity(intent1);
             return true;
-        } else if (id == R.id.menu_item2) {
+        } else if (id == R.id.menu_item2)
+        {
             Intent intent2 = new Intent(this, HajoFoglalasActivity.class);
             startActivity(intent2);
             return true;
@@ -58,9 +77,22 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent2);
             return true;
         }
+        else if(id == R.id.menu_item4)
+        {
+            logout();
+            Intent intent2 = new Intent(this, MainActivity.class);
+            startActivity(intent2);
+            return true;
+        }
         else {
             return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void logout()
+    {
+        FirebaseAuth.getInstance().signOut();
+        MainActivity.isLoggedin = false;
     }
     public void cancel()
     {
@@ -84,10 +116,18 @@ public class LoginActivity extends AppCompatActivity {
             if (task.isSuccessful()) {
                 FirebaseUser user = mAuth.getCurrentUser();
                 Toast.makeText(LoginActivity.this, "Authentication successful.", Toast.LENGTH_SHORT).show();
+                MainActivity.isLoggedin = true;
 
+                Intent intent = new Intent(this, HajoFoglalasActivity.class);
+                startActivity(intent);
             } else {
                 Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+    public void registration(View view)
+    {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
     }
 }

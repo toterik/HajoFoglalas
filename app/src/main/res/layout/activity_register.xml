@@ -7,4 +7,69 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
 
+  <androidx.appcompat.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="?attr/actionBarSize"
+      android:background="?attr/colorPrimary"
+      android:elevation="4dp"
+      app:navigationIcon="@null"
+      app:layout_constraintTop_toTopOf="parent"/>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      android:layout_marginTop="65dp"
+      tools:layout_editor_absoluteX="-206dp"
+      tools:layout_editor_absoluteY="-136dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Email" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="email"
+        android:inputType="textEmailAddress" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Password" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="jelszó"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Password again" />
+
+    <EditText
+        android:id="@+id/passwordagain"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="jelszó ismét"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:onClick="regisztracio"
+        android:text="Regisztráció" />
+
+  </LinearLayout>
+
   </androidx.constraintlayout.widget.ConstraintLayout>

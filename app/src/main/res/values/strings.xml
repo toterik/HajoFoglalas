@@ -1,10 +1,35 @@
 <resources>
     <string name="app_name">HajoFoglalas</string>
-    <string name="item_1">Item 1</string>
-    <string name="item_2">Item 2</string>
-    <string name="item_3">Item 3</string>
+    <string name="item_1">Main</string>
+    <string name="item_2">Foglalás</string>
+    <string name="item_3">nemtudom</string>
     <string name="title_activity_main2">MainActivity2</string>
     <string name="title_activity_hajofoglalas">Hajofoglalas</string>
     <string name="dv_az_oldalon">üDV AZ OLDALON</string>
     <string name="title_activity_register">RegisterActivity</string>
+
+    <string-array name="Ship_names">
+        <item>NICOLS ESTIVALE QUATTRO</item>
+        <item>NICOLS ESTIVALE SIXTO</item>
+        <item>NICOLS ESTIVALE OCTO</item>
+    </string-array>
+
+    <string-array name="Ship_description">
+        <item>Quattro nyaralóhajónk 4+2 vendég fogadására ideális.</item>
+        <item>Sixto nyaralóhajónk 6+2 vendég fogadására ideális.</item>
+        <item>Legnagyobb kapacitású nyaralóhajónk</item>
+    </string-array>
+
+
+    <array name="ship_images">
+        <item>@drawable/hajo </item>
+        <item>@drawable/hajoketto</item>
+        <item>@drawable/hajoharom</item>
+    </array>
+
+    <string-array name="Ship_price">
+        <item>100000 Ft</item>
+        <item>200000 Ft</item>
+        <item>300000 Ft</item>
+    </string-array>
 </resources>
