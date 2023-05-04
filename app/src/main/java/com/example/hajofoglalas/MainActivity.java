@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
             item.setVisible(true);
             MenuItem items = menu.findItem(R.id.menu_item4);
             items.setVisible(false);
-
         }
         return true;
     }

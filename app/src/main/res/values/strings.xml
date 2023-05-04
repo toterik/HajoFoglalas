@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">HajoFoglalas</string>
-    <string name="item_1">Main</string>
+    <string name="item_1">Kezdőoldal</string>
     <string name="item_2">Foglalás</string>
-    <string name="item_3">nemtudom</string>
     <string name="title_activity_main2">MainActivity2</string>
     <string name="title_activity_hajofoglalas">Hajofoglalas</string>
     <string name="dv_az_oldalon">üDV AZ OLDALON</string>
     <string name="title_activity_register">RegisterActivity</string>
+    <string name="logout">Kijelentkezés</string>
+    <string name="login">Bejelentkezés</string>
 
     <string-array name="Ship_names">
         <item>NICOLS ESTIVALE QUATTRO</item>

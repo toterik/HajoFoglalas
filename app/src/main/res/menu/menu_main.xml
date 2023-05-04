@@ -8,8 +8,8 @@
         android:title="@string/item_2"/>
     <item
         android:id="@+id/menu_item3"
-        android:title="Bejelentkezés"/>
+        android:title="@string/login"/>
     <item
         android:id="@+id/menu_item4"
-        android:title="Kijelentkezés"/>
+        android:title="@string/logout"/>
 </menu>

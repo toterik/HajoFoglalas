@@ -113,11 +113,17 @@ public class RegisterActivity extends AppCompatActivity
 
         mAuth = FirebaseAuth.getInstance();
 
+        if(email.isEmpty() || password.isEmpty() || passwordagain.isEmpty())
+        {
+            Toast.makeText(this, "Minden mezőt ki kell tölteni!", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if(!passwordagain.equals(password))
         {
             Toast.makeText(this, "A két jelszó nem egyezik!", Toast.LENGTH_SHORT).show();
             return;
         }
+
 
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, task -> {
             if (task.isSuccessful()) {
