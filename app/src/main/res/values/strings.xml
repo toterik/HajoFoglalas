@@ -8,6 +8,7 @@
     <string name="title_activity_register">RegisterActivity</string>
     <string name="logout">Kijelentkezés</string>
     <string name="login">Bejelentkezés</string>
+    <string name="rendezés">Sort</string>
 
     <string-array name="Ship_names">
         <item>NICOLS ESTIVALE QUATTRO</item>

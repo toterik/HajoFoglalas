@@ -8,18 +8,20 @@ public class Ship
     private String name;
     private String price;
     private boolean foglalt;
+    private int position;
 
     public Ship() {
     }
 
 
-    public Ship(String desccription, int imageResource, String name, String price) {
+    public Ship(String desccription, int imageResource, String name, String price, boolean foglalt) {
         this.desccription = desccription;
         this.imageResource = imageResource;
         this.name = name;
         this.price = price;
-        this.foglalt = false;
+        this.foglalt = foglalt;
     }
+
 
     public void setFoglalt(boolean foglalt) {
         this.foglalt = foglalt;

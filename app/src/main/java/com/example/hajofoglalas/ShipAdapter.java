@@ -37,7 +37,6 @@ public class ShipAdapter extends RecyclerView.Adapter<ShipAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ShipAdapter.ViewHolder holder, int position) {
         Ship currentItem = mShipItemsData.get(position);
-
         holder.bindTo(currentItem, position);
     }
 
@@ -79,7 +78,7 @@ public class ShipAdapter extends RecyclerView.Adapter<ShipAdapter.ViewHolder> {
             mPrice.setText(currentItem.getPrice());
             Glide.with(mContext).load(currentItem.getImageResource()).into(mImage);
 
-            itemView.findViewById(R.id.delete).setOnClickListener(view -> ((HajoFoglalasActivity)mContext).delete(currentItem));
+             itemView.findViewById(R.id.delete).setOnClickListener(view -> ((HajoFoglalasActivity)mContext).delete(currentItem));
             itemView.findViewById(R.id.booking).setOnClickListener(view -> ((HajoFoglalasActivity)mContext).booking(currentItem,position));
 
         }

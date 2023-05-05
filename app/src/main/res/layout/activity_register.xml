@@ -70,6 +70,7 @@
         android:onClick="regisztracio"
         android:text="Regisztráció" />
 
+
   </LinearLayout>
 
   </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,19 +3,14 @@ package com.example.hajofoglalas;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Notification;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,11 +18,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
 
@@ -40,9 +37,8 @@ public class HajoFoglalasActivity extends AppCompatActivity {
     private int gridNumber = 1;
     private FirebaseFirestore mFireStore;
     private CollectionReference mItems;
-
-
-    DocumentReference mdocRef;
+    private ImageView imageViewAsc;
+    private ImageView imageViewDesc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +54,6 @@ public class HajoFoglalasActivity extends AppCompatActivity {
         }
 
 
-
         mrRecyclerView = findViewById(R.id.recyclerView);
         mrRecyclerView.setLayoutManager(new GridLayoutManager(this, gridNumber));
 
@@ -70,28 +65,37 @@ public class HajoFoglalasActivity extends AppCompatActivity {
         mFireStore = FirebaseFirestore.getInstance();
         mItems = mFireStore.collection("Ships");
 
+        imageViewAsc = findViewById(R.id.sortAsc);
+        imageViewDesc = findViewById(R.id.sortDesc);
+        imageViewAsc.setVisibility(View.INVISIBLE);
+
+
         queryData();
+
     }
 
-    public void queryData()
-    {
+    public void queryData() {
         mItemList.clear();
 
         mItems.get().addOnSuccessListener(queryDocumentSnapshots -> {
-            for(QueryDocumentSnapshot document : queryDocumentSnapshots){
+            for (QueryDocumentSnapshot document : queryDocumentSnapshots)
+            {
                 Ship item = document.toObject(Ship.class);
                 item.setId(document.getId());
                 mItemList.add(item);
             }
 
-            if(mItemList.size() == 0)
+            if (mItemList.size() == 0)
             {
                 initalize();
                 queryData();
             }
             mAdapter.notifyDataSetChanged();
+
         });
+
     }
+
     public void delete(Ship item) {
         DocumentReference ref = mItems.document(item._getId());
         ref.delete()
@@ -113,11 +117,42 @@ public class HajoFoglalasActivity extends AppCompatActivity {
         TypedArray itemsImageResource = getResources().obtainTypedArray(R.array.ship_images);
 
         for (int i = 0; i < itemsList.length; i++) {
-            mItems.add(new Ship(itemsDescription[i], itemsImageResource.getResourceId(i, 0), itemsList[i], itemsPrice[i]));
+            mItems.add(new Ship(itemsDescription[i], itemsImageResource.getResourceId(i, 0), itemsList[i], itemsPrice[i],false));
         }
 
         itemsImageResource.recycle();
 
+    }
+    public void sortAsc(View view)
+    {
+        mItemList.clear();
+        mItems.orderBy("price", Query.Direction.ASCENDING).get().addOnSuccessListener(queryDocumentSnapshots -> {
+            for (QueryDocumentSnapshot document : queryDocumentSnapshots)
+            {
+                Ship item = document.toObject(Ship.class);
+                item.setId(document.getId());
+                mItemList.add(item);
+            }
+            mAdapter.notifyDataSetChanged();
+        });
+
+        imageViewAsc.setVisibility(View.INVISIBLE);
+        imageViewDesc.setVisibility(View.VISIBLE);
+    }
+    public void sortDesc(View view)
+    {
+        mItemList.clear();
+        mItems.orderBy("price", Query.Direction.DESCENDING).get().addOnSuccessListener(queryDocumentSnapshots -> {
+            for (QueryDocumentSnapshot document : queryDocumentSnapshots)
+            {
+                Ship item = document.toObject(Ship.class);
+                item.setId(document.getId());
+                mItemList.add(item);
+            }
+            mAdapter.notifyDataSetChanged();
+        });
+        imageViewDesc.setVisibility(View.INVISIBLE);
+        imageViewAsc.setVisibility(View.VISIBLE);
     }
 
 
@@ -137,11 +172,16 @@ public class HajoFoglalasActivity extends AppCompatActivity {
                 item.setFoglalt(true);
             }
         }
+
+        NotificationManager notif=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        Notification notify=new Notification.Builder
+                (getApplicationContext()).setContentTitle("title").setContentText("body")
+                .setSmallIcon(R.drawable.hajo).build();
+
+        notify.flags |= Notification.FLAG_AUTO_CANCEL;
+        notif.notify(0, notify);
     }
 
-    private void update(Ship item) {
-        mdocRef.update("isfoglalt", item.isFoglalt());
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
