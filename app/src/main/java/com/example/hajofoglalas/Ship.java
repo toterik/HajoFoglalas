@@ -6,7 +6,7 @@ public class Ship
     private String desccription;
     private int imageResource;
     private String name;
-    private String price;
+    private int price;
     private boolean foglalt;
     private int position;
 
@@ -14,7 +14,7 @@ public class Ship
     }
 
 
-    public Ship(String desccription, int imageResource, String name, String price, boolean foglalt) {
+    public Ship(String desccription, int imageResource, String name, int price, boolean foglalt) {
         this.desccription = desccription;
         this.imageResource = imageResource;
         this.name = name;
@@ -47,11 +47,11 @@ public class Ship
         this.name = name;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
     public String _getId()

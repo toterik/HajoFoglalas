@@ -11,25 +11,38 @@
     <string name="rendezés">Sort</string>
 
     <string-array name="Ship_names">
-        <item>NICOLS ESTIVALE QUATTRO</item>
-        <item>NICOLS ESTIVALE SIXTO</item>
-        <item>NICOLS ESTIVALE OCTO</item>
+        <item>Furry Pirate Ship</item>
+        <item>Kitty Cruiser</item>
+        <item>Cat Tail</item>
+        <item>Santa Maria</item>
+        <item>Titanic</item>
+        <item>Cat’s Meow</item>
     </string-array>
 
     <string-array name="Ship_description">
         <item>Quattro nyaralóhajónk 4+2 vendég fogadására ideális.</item>
         <item>Sixto nyaralóhajónk 6+2 vendég fogadására ideális.</item>
         <item>Legnagyobb kapacitású nyaralóhajónk</item>
+        <item>Quattro nyaralóhajónk 4+2 vendég fogadására ideális.</item>
+        <item>Sixto nyaralóhajónk 6+2 vendég fogadására ideális.</item>
+        <item>Legnagyobb kapacitású nyaralóhajónk</item>
+
     </string-array>
     <array name="ship_images">
-        <item>@drawable/hajo </item>
-        <item>@drawable/hajoketto</item>
-        <item>@drawable/hajoharom</item>
+        <item>@drawable/macskahajo </item>
+        <item>@drawable/macskahajo2</item>
+        <item>@drawable/macskahajo3</item>
+        <item>@drawable/macskahajo4 </item>
+        <item>@drawable/macskahajo5</item>
+        <item>@drawable/macskahajo6</item>
     </array>
 
-    <string-array name="Ship_price">
-        <item>100000 Ft</item>
-        <item>200000 Ft</item>
-        <item>300000 Ft</item>
-    </string-array>
+    <integer-array name="Ship_price">
+        <item>100000</item>
+        <item>200000</item>
+        <item>300000</item>
+        <item>130000</item>
+        <item>50000</item>
+        <item>70000</item>
+    </integer-array>
 </resources>

@@ -55,8 +55,9 @@ public class HajoFoglalasActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(false);
-            actionBar.setTitle("");
+            actionBar.setTitle("aaaaaaa");
         }
+
 
 
         mrRecyclerView = findViewById(R.id.recyclerView);
@@ -86,6 +87,7 @@ public class HajoFoglalasActivity extends AppCompatActivity {
         mItems.get().addOnSuccessListener(queryDocumentSnapshots -> {
             for (QueryDocumentSnapshot document : queryDocumentSnapshots)
             {
+
                 Ship item = document.toObject(Ship.class);
                 item.setId(document.getId());
                 mItemList.add(item);
@@ -119,7 +121,7 @@ public class HajoFoglalasActivity extends AppCompatActivity {
     private void initalize() {
         String[] itemsList = getResources().getStringArray(R.array.Ship_names);
         String[] itemsDescription = getResources().getStringArray(R.array.Ship_description);
-        String[] itemsPrice = getResources().getStringArray(R.array.Ship_price);
+        int[] itemsPrice = getResources().getIntArray(R.array.Ship_price);
         TypedArray itemsImageResource = getResources().obtainTypedArray(R.array.ship_images);
 
         for (int i = 0; i < itemsList.length; i++) {

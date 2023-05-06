@@ -75,10 +75,11 @@ public class ShipAdapter extends RecyclerView.Adapter<ShipAdapter.ViewHolder> {
         {
             mDescription.setText(currentItem.getDesccription());
             mName.setText(currentItem.getName());
-            mPrice.setText(currentItem.getPrice());
+
+            mPrice.setText((Integer.toString(currentItem.getPrice()))+" Ft");
             Glide.with(mContext).load(currentItem.getImageResource()).into(mImage);
 
-             itemView.findViewById(R.id.delete).setOnClickListener(view -> ((HajoFoglalasActivity)mContext).delete(currentItem));
+            itemView.findViewById(R.id.delete).setOnClickListener(view -> ((HajoFoglalasActivity)mContext).delete(currentItem));
             itemView.findViewById(R.id.booking).setOnClickListener(view -> ((HajoFoglalasActivity)mContext).booking(currentItem,position));
 
         }
