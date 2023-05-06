@@ -8,14 +8,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
+
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
     public static boolean isLoggedin = false;
-    private MenuItem loginMenuItem;
-    private MenuItem logoutMenuItem;
+    private ImageView imageView1;
+    private  ImageView imageView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,20 @@ public class MainActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(false);
             actionBar.setTitle("");
         }
+        imageView1 = findViewById(R.id.macska1);
+        imageView2 = findViewById(R.id.macska2);
+
+        Animation animation = AnimationUtils.loadAnimation(this,R.anim.rotate);
+        imageView1.startAnimation(animation);
+
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        Animation animation2 = AnimationUtils.loadAnimation(this,R.anim.move);
+        imageView2.startAnimation(animation2);
 
     }
 

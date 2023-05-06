@@ -21,8 +21,6 @@
         <item>Sixto nyaralóhajónk 6+2 vendég fogadására ideális.</item>
         <item>Legnagyobb kapacitású nyaralóhajónk</item>
     </string-array>
-
-
     <array name="ship_images">
         <item>@drawable/hajo </item>
         <item>@drawable/hajoketto</item>

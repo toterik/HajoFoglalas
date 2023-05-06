@@ -4,14 +4,18 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -39,6 +43,7 @@ public class HajoFoglalasActivity extends AppCompatActivity {
     private CollectionReference mItems;
     private ImageView imageViewAsc;
     private ImageView imageViewDesc;
+    private NotificationManager notificationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +74,7 @@ public class HajoFoglalasActivity extends AppCompatActivity {
         imageViewDesc = findViewById(R.id.sortDesc);
         imageViewAsc.setVisibility(View.INVISIBLE);
 
+        notificationManager =getSystemService(NotificationManager.class);
 
         queryData();
 
@@ -156,6 +162,7 @@ public class HajoFoglalasActivity extends AppCompatActivity {
     }
 
 
+    @SuppressLint("MissingPermission")
     public void booking(Ship item, int position) {
         if (!MainActivity.isLoggedin) {
             Toast.makeText(this, "Ehhez a funkcióhoz be kell, hogy jelentkezz!", Toast.LENGTH_SHORT).show();
@@ -164,22 +171,41 @@ public class HajoFoglalasActivity extends AppCompatActivity {
         } else {
             View view = mrRecyclerView.getChildAt(position);
             Button button = view.findViewById(R.id.booking);
+
+            if(Build.VERSION.SDK_INT >=Build.VERSION_CODES.O)
+            {
+
+                NotificationChannel channel= new NotificationChannel("My Notification","My Notification",NotificationManager.IMPORTANCE_DEFAULT);
+                NotificationManager manager =getSystemService(NotificationManager.class);
+                manager.createNotificationChannel(channel);
+            }
+
             if (item.isFoglalt()) {
                 button.setText("Lefoglal");
                 item.setFoglalt(false);
-            } else {
+                String message="Sikeresen törölted a "+item.getName()+" hajó foglalását!";
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(HajoFoglalasActivity.this,"My Notification");
+                builder.setContentTitle("Hajó Foglalás");
+                builder.setContentText(message);
+                builder.setSmallIcon(R.drawable.hajoikon);
+                builder.setAutoCancel(true);
+                NotificationManagerCompat managerCompat=NotificationManagerCompat.from(HajoFoglalasActivity.this);
+                managerCompat.notify(1,builder.build());
+
+            } else
+            {
+                String message="Sikeresen lefoglaltad a "+item.getName()+" hajót!";
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(HajoFoglalasActivity.this,"My Notification");
+                builder.setContentTitle("Hajó Foglalás");
+                builder.setContentText(message);
+                builder.setSmallIcon(R.drawable.hajoikon);
+                builder.setAutoCancel(true);
+                NotificationManagerCompat managerCompat=NotificationManagerCompat.from(HajoFoglalasActivity.this);
+                managerCompat.notify(1,builder.build());
                 button.setText("Foglalt");
                 item.setFoglalt(true);
             }
         }
-
-        NotificationManager notif=(NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
-        Notification notify=new Notification.Builder
-                (getApplicationContext()).setContentTitle("title").setContentText("body")
-                .setSmallIcon(R.drawable.hajo).build();
-
-        notify.flags |= Notification.FLAG_AUTO_CANCEL;
-        notif.notify(0, notify);
     }
 
 

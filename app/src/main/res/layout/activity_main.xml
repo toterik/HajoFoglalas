@@ -20,9 +20,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dv_az_oldalon"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintHorizontal_bias="0.548"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintVertical_bias="0.924" />
+
+    <ImageView
+        android:id="@+id/macska1"
+        android:layout_width="429dp"
+        android:layout_height="304dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:srcCompat="@drawable/plink" />
+
+    <ImageView
+        android:id="@+id/macska2"
+        android:layout_width="421dp"
+        android:layout_height="250dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/macska1"
+        app:srcCompat="@drawable/macska" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
