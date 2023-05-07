@@ -22,21 +22,23 @@
 
         <ImageView
             android:id="@+id/macska1"
-            android:layout_width="382dp"
-            android:layout_height="247dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="430dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar"
             app:srcCompat="@drawable/plink" />
 
         <ImageView
             android:id="@+id/macska2"
-            android:layout_width="402dp"
-            android:layout_height="239dp"
-            app:layout_constraintEnd_toEndOf="@+id/macska1"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/macska1"
+            android:layout_width="430dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/macska1"
             app:srcCompat="@drawable/macska" />
 
@@ -47,11 +49,11 @@
             android:gravity="center"
             android:text="Üdvözöllek az oldalon\n(Az árak a macskákat nem tartalmazzák)"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/macska1"
-            app:layout_constraintHorizontal_bias="0.491"
-            app:layout_constraintStart_toStartOf="@+id/macska1"
+            app:layout_constraintEnd_toEndOf="@+id/macska2"
+            app:layout_constraintHorizontal_bias="0.554"
+            app:layout_constraintStart_toStartOf="@+id/macska2"
             app:layout_constraintTop_toBottomOf="@id/macska2"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.07" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

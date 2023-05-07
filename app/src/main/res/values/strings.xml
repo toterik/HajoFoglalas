@@ -17,7 +17,7 @@
     <string name="passwdagain">Jelszó megerősítése</string>
 
     <string-array name="Ship_names">
-        <item>Furry Pirate Ship</item>
+        <item>Pirate Ship</item>
         <item>Kitty Cruiser</item>
         <item>Cat Tail</item>
         <item>Santa Maria</item>
@@ -26,14 +26,14 @@
     </string-array>
 
     <string-array name="Ship_description">
-        <item>Quattro nyaralóhajónk 4+2 vendég fogadására ideális.</item>
-        <item>Sixto nyaralóhajónk 6+2 vendég fogadására ideális.</item>
-        <item>Legnagyobb kapacitású nyaralóhajónk</item>
-        <item>Quattro nyaralóhajónk 4+2 vendég fogadására ideális.</item>
-        <item>Sixto nyaralóhajónk 6+2 vendég fogadására ideális.</item>
-        <item>Legnagyobb kapacitású nyaralóhajónk</item>
-
+        <item>Úszik a vízen</item>
+        <item>Néha lerobban</item>
+        <item>Nem süllyed el</item>
+        <item>Vízi jármű</item>
+        <item>Néha</item>
+        <item>A kapitány megvesztegethető</item>
     </string-array>
+
     <array name="ship_images">
         <item>@drawable/macskahajo </item>
         <item>@drawable/macskahajo2</item>

@@ -62,22 +62,21 @@ public class ShipAdapter extends RecyclerView.Adapter<ShipAdapter.ViewHolder> {
             mName = itemView.findViewById(R.id.name);
             mPrice = itemView.findViewById(R.id.price);
 
-            itemView.findViewById(R.id.booking).setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-                    //TODO
-                }
-
-            });
         }
 
         public void bindTo(Ship currentItem, int position)
         {
             mDescription.setText(currentItem.getDesccription());
             mName.setText(currentItem.getName());
-
             mPrice.setText((Integer.toString(currentItem.getPrice()))+" Ft");
             Glide.with(mContext).load(currentItem.getImageResource()).into(mImage);
+
+            Button bookingButton = itemView.findViewById(R.id.booking);
+            if (currentItem.isFoglalt()) {
+                bookingButton.setText("Foglalt");
+            } else {
+                bookingButton.setText("Foglalás");
+            }
 
             itemView.findViewById(R.id.delete).setOnClickListener(view -> ((HajoFoglalasActivity)mContext).delete(currentItem));
             itemView.findViewById(R.id.booking).setOnClickListener(view -> ((HajoFoglalasActivity)mContext).booking(currentItem,position));

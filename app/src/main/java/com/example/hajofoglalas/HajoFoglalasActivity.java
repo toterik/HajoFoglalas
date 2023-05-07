@@ -45,6 +45,7 @@ public class HajoFoglalasActivity extends AppCompatActivity {
     private ImageView imageViewDesc;
     private NotificationManager notificationManager;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -91,6 +92,7 @@ public class HajoFoglalasActivity extends AppCompatActivity {
 
                 Ship item = document.toObject(Ship.class);
                 item.setId(document.getId());
+               // item.setFoglalt((Boolean) document.get("foglalt"));
                 mItemList.add(item);
             }
 
@@ -100,7 +102,6 @@ public class HajoFoglalasActivity extends AppCompatActivity {
                 queryData();
             }
             mAdapter.notifyDataSetChanged();
-
         });
 
     }
@@ -116,9 +117,6 @@ public class HajoFoglalasActivity extends AppCompatActivity {
                 });
         queryData();
     }
-
-
-
     private void initalize() {
         String[] itemsList = getResources().getStringArray(R.array.Ship_names);
         String[] itemsDescription = getResources().getStringArray(R.array.Ship_description);
@@ -167,48 +165,46 @@ public class HajoFoglalasActivity extends AppCompatActivity {
 
     @SuppressLint("MissingPermission")
     public void booking(Ship item, int position) {
-        if (!MainActivity.isLoggedin) {
+
+         if (!MainActivity.isLoggedin)
+         {
             Toast.makeText(this, "Ehhez a funkcióhoz be kell, hogy jelentkezz!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
-        } else {
-            View view = mrRecyclerView.getChildAt(position);
-            Button button = view.findViewById(R.id.booking);
+         } else
+         {
+             View view = mrRecyclerView.getLayoutManager().findViewByPosition(position);
+             Button button = view.findViewById(R.id.booking);
 
-            if(Build.VERSION.SDK_INT >=Build.VERSION_CODES.O)
-            {
 
-                NotificationChannel channel= new NotificationChannel("My Notification","My Notification",NotificationManager.IMPORTANCE_DEFAULT);
-                NotificationManager manager =getSystemService(NotificationManager.class);
-                manager.createNotificationChannel(channel);
-            }
+             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+             {
 
-            if (item.isFoglalt()) {
-                button.setText("Lefoglal");
-                item.setFoglalt(false);
-                String message="Sikeresen törölted a "+item.getName()+" hajó foglalását!";
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(HajoFoglalasActivity.this,"My Notification");
-                builder.setContentTitle("Hajó Foglalás");
-                builder.setContentText(message);
-                builder.setSmallIcon(R.drawable.hajoikon);
-                builder.setAutoCancel(true);
-                NotificationManagerCompat managerCompat=NotificationManagerCompat.from(HajoFoglalasActivity.this);
-                managerCompat.notify(1,builder.build());
+                 NotificationChannel channel = new NotificationChannel("My Notification", "My Notification", NotificationManager.IMPORTANCE_DEFAULT);
+                 NotificationManager manager = getSystemService(NotificationManager.class);
+                 manager.createNotificationChannel(channel);
+             }
 
-            } else
-            {
-                String message="Sikeresen lefoglaltad a "+item.getName()+" hajót!";
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(HajoFoglalasActivity.this,"My Notification");
-                builder.setContentTitle("Hajó Foglalás");
-                builder.setContentText(message);
-                builder.setSmallIcon(R.drawable.hajoikon);
-                builder.setAutoCancel(true);
-                NotificationManagerCompat managerCompat=NotificationManagerCompat.from(HajoFoglalasActivity.this);
-                managerCompat.notify(1,builder.build());
-                button.setText("Foglalt");
-                item.setFoglalt(true);
-            }
-        }
+             button.setText(item.isFoglalt() ? "Lefoglal" : "Foglalt");
+             item.setFoglalt(!item.isFoglalt());
+             String message = item.isFoglalt() ?"Sikeresen lefoglaltad a " + item.getName() + " hajót!":
+                     "Sikeresen törölted a " + item.getName() + " hajó foglalását!";
+
+             NotificationCompat.Builder builder = new NotificationCompat.Builder(HajoFoglalasActivity.this, "My Notification");
+             builder.setContentTitle("Hajó Foglalás");
+             builder.setContentText(message);
+             builder.setSmallIcon(R.drawable.hajoikon);
+             builder.setAutoCancel(true);
+             NotificationManagerCompat managerCompat = NotificationManagerCompat.from(HajoFoglalasActivity.this);
+             managerCompat.notify(1, builder.build());
+
+             update(item);
+         }
+    }
+    private void update(Ship item)
+    {
+        DocumentReference shipRef = mFireStore.collection("Ships").document(item._getId());
+        shipRef.update("foglalt",item.isFoglalt());
     }
 
 
@@ -258,7 +254,8 @@ public class HajoFoglalasActivity extends AppCompatActivity {
         }
     }
 
-    private void logout() {
+    private void logout()
+    {
         FirebaseAuth.getInstance().signOut();
         MainActivity.isLoggedin = false;
     }

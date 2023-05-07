@@ -2,6 +2,7 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -43,10 +44,29 @@
             android:layout_marginTop="20dp"/>
 
         <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="52dp"
+            android:backgroundTint="@color/lightblue"
+            android:onClick="cancel"
+            android:text="@string/cancel"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@+id/registration"
+            app:layout_constraintEnd_toEndOf="@+id/registration"
+
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@id/loginButton"
+            app:layout_constraintTop_toBottomOf="@id/password"
+            app:layout_constraintVertical_bias="0.058"
+            app:layout_constraintWidth_percent="0.45" />
+
+        <Button
             android:id="@+id/loginButton"
-            android:layout_width="140dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="84dp"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="52dp"
             android:backgroundTint="@color/lightblue"
             android:onClick="login"
             android:text="@string/login"
@@ -58,33 +78,16 @@
             app:layout_constraintWidth_percent="0.45" />
 
         <Button
-            android:id="@+id/cancel_button"
-            android:layout_width="140dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="7dp"
-            android:layout_marginTop="84dp"
-            android:backgroundTint="@color/lightblue"
-            android:onClick="cancel"
-            android:text="@string/cancel"
-            android:textColor="@color/black"
-            app:layout_constraintEnd_toEndOf="@+id/registration"
-            app:layout_constraintHorizontal_bias="1.0"
-
-            app:layout_constraintStart_toEndOf="@id/loginButton"
-            app:layout_constraintTop_toBottomOf="@id/password"
-            app:layout_constraintWidth_percent="0.45" />
-
-        <Button
             android:id="@+id/registration"
-            android:layout_width="340dp"
-            android:layout_height="52dp"
-            android:layout_marginTop="56dp"
-            android:textColor="@color/black"
+            android:layout_width="410dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
             android:backgroundTint="@color/lightblue"
             android:onClick="registration"
             android:text="@string/register"
+            android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintHorizontal_bias="0.517"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loginButton" />
 
