@@ -49,6 +49,7 @@ public class HajoFoglalasActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        Log.d("asd","oncreate ");
         setContentView(R.layout.activity_hajofoglalas);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

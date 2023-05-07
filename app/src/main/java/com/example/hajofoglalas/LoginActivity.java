@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseAuth.getInstance().signOut();
         MainActivity.isLoggedin = false;
     }
-    public void cancel()
+    public void cancel(View view)
     {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

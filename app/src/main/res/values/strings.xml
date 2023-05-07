@@ -4,11 +4,17 @@
     <string name="item_2">Foglalás</string>
     <string name="title_activity_main2">MainActivity2</string>
     <string name="title_activity_hajofoglalas">Hajofoglalas</string>
-    <string name="dv_az_oldalon">üDV AZ OLDALON</string>
     <string name="title_activity_register">RegisterActivity</string>
     <string name="logout">Kijelentkezés</string>
     <string name="login">Bejelentkezés</string>
     <string name="rendezés">Sort</string>
+    <string name="register">Regisztráció</string>
+    <string name="cancel">Mégse</string>
+    <string name="password">Jelszó</string>
+    <string name="email">Email</string>
+    <string name="booking">Lefoglal</string>
+    <string name="delete">Törlés</string>
+    <string name="passwdagain">Jelszó megerősítése</string>
 
     <string-array name="Ship_names">
         <item>Furry Pirate Ship</item>

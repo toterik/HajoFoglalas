@@ -11,7 +11,7 @@
       android:id="@+id/toolbar"
       android:layout_width="match_parent"
       android:layout_height="?attr/actionBarSize"
-      android:background="?attr/colorPrimary"
+      android:background="@color/lightblue"
       android:elevation="4dp"
       app:navigationIcon="@null"
       app:layout_constraintTop_toTopOf="parent"/>
@@ -28,39 +28,39 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
-        android:text="Email" />
+        android:text="@string/email" />
 
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="email"
+        android:hint="@string/email"
         android:inputType="textEmailAddress" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
-        android:text="Password" />
+        android:text="@string/password" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="jelszó"
+        android:hint="@string/password"
         android:inputType="textPassword" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
-        android:text="Password again" />
+        android:text="@string/passwdagain" />
 
     <EditText
         android:id="@+id/passwordagain"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="jelszó ismét"
+        android:hint="@string/passwdagain"
         android:inputType="textPassword" />
 
     <Button
@@ -68,7 +68,9 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:onClick="regisztracio"
-        android:text="Regisztráció" />
+        android:backgroundTint="@color/lightblue"
+        android:textColor="@color/black"
+        android:text="@string/register" />
 
 
   </LinearLayout>
